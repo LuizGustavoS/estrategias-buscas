@@ -1,18 +1,24 @@
 package br.com.busca.model;
 
+import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
 public class Node {
 
     public final String value;
 
     public double g_scores;
 
-    public final double h_scores;
+    public double h_scores;
 
     public double f_scores = 0;
 
-    public Edge[] adjacencies;
-
     public Node parent;
+
+    public List<Edge> adjacencies = new ArrayList<>();
 
     public Node(String val, double hVal){
         value = val;
