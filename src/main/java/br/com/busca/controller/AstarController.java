@@ -13,24 +13,9 @@ public class AstarController {
 
         Set<Node> explored = new HashSet<Node>();
 
-        PriorityQueue<Node> queue = new PriorityQueue<Node>(20,
-                new Comparator<Node>(){
-                    //override compare method
-                    public int compare(Node i, Node j){
-                        if(i.f_scores > j.f_scores){
-                            return 1;
-                        }
-
-                        else if (i.f_scores < j.f_scores){
-                            return -1;
-                        }
-
-                        else{
-                            return 0;
-                        }
-                    }
-
-                }
+        //override compare method
+        PriorityQueue<Node> queue = new PriorityQueue<>(20,
+                Comparator.comparingDouble(i -> i.f_scores)
         );
 
         //cost from start
