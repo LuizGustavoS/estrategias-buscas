@@ -20,9 +20,13 @@ public class Node {
 
     public List<Edge> adjacencies = new ArrayList<>();
 
+    public Node(String val){
+        this.value = val;
+    }
+
     public Node(String val, double hVal){
-        value = val;
-        h_scores = hVal;
+        this.value = val;
+        this.h_scores = hVal;
     }
 
     public String toString(){
