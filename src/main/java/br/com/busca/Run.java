@@ -11,12 +11,10 @@ public class Run {
     public static void main(String[] args) {
 
         try {
-            DataloadController loader = new DataloadController();
-            List<Node> nodes = loader.loadNodes();
+            List<Node> nodes = DataloadController.loadNodes();
 
-            Node nodeInicio = nodes.get(0);
-            //nodeInicio.set
-            Node nodeFinal = nodes.get(7);
+            Node nodeInicio = nodes.get(7);
+            Node nodeFinal = nodes.get(0);
 
             System.out.println(nodeInicio);
             System.out.println(nodeFinal);

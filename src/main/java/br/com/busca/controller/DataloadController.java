@@ -13,11 +13,10 @@ public class DataloadController {
     public static List<Node> loadNodes() throws Exception {
 
         final String contentEstados = Files.readString(Path.of(ClassLoader
-                .getSystemResource("capitais-aracaju.json")
+                .getSystemResource("capitais.json")
                 .toURI()));
 
-        final List<String> listCidades = new ObjectMapper()
-                .readValue(contentEstados, List.class);
+        final List<String> listCidades = new ObjectMapper().readValue(contentEstados, List.class);
 
         List<Node> listNode = new ArrayList<>();
         for (String cidade : listCidades) {
