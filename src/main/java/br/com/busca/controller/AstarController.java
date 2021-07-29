@@ -11,12 +11,10 @@ public class AstarController {
 
     public static List<Node> aStarSearch(Node source, Node goal){
 
-        Set<Node> explored = new HashSet<Node>();
+        Set<Node> explored = new HashSet<>();
 
         //override compare method
-        PriorityQueue<Node> queue = new PriorityQueue<>(20,
-                Comparator.comparingDouble(i -> i.f_scores)
-        );
+        PriorityQueue<Node> queue = new PriorityQueue<>(20, Comparator.comparingDouble(i -> i.f_scores));
 
         //cost from start
         source.g_scores = 0;
@@ -44,49 +42,36 @@ public class AstarController {
                 double temp_g_scores = current.g_scores + cost;
                 double temp_f_scores = temp_g_scores + child.h_scores;
 
+                /*if child node has been evaluated and
+                the newer f_score is higher, skip*/
+                if ((!explored.contains(child)) || (!(temp_f_scores >= child.f_scores))) {
+                    if((!queue.contains(child)) || (temp_f_scores < child.f_scores)){
 
-                                /*if child node has been evaluated and
-                                the newer f_score is higher, skip*/
+                        child.parent = current;
+                        child.g_scores = temp_g_scores;
+                        child.f_scores = temp_f_scores;
 
-                if((explored.contains(child)) &&
-                        (temp_f_scores >= child.f_scores)){
-                    continue;
-                }
-
-                                /*else if child node is not in queue or
-                                newer f_score is lower*/
-
-                else if((!queue.contains(child)) ||
-                        (temp_f_scores < child.f_scores)){
-
-                    child.parent = current;
-                    child.g_scores = temp_g_scores;
-                    child.f_scores = temp_f_scores;
-
-                    if(queue.contains(child)){
                         queue.remove(child);
+                        queue.add(child);
                     }
-
-                    queue.add(child);
-
                 }
 
+                /*else if child node is not in queue or
+                newer f_score is lower*/
             }
-
         }
 
         return printPath(goal);
     }
 
     public static List<Node> printPath(Node target){
-        List<Node> path = new ArrayList<Node>();
 
+        List<Node> path = new ArrayList<>();
         for(Node node = target; node!=null; node = node.parent){
             path.add(node);
         }
 
         Collections.reverse(path);
-
         return path;
     }
 }

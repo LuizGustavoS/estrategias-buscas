@@ -1,11 +1,8 @@
 package br.com.busca.model;
 
-import lombok.Data;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 public class Node {
 
     public final String value;
@@ -24,9 +21,12 @@ public class Node {
         this.value = val;
     }
 
-    public Node(String val, double hVal){
-        this.value = val;
-        this.h_scores = hVal;
+    public void setH_scores(double h_scores) {
+        this.h_scores = h_scores;
+    }
+
+    public void setAdjacencies(List<Edge> adjacencies) {
+        this.adjacencies = adjacencies;
     }
 
     public String toString(){

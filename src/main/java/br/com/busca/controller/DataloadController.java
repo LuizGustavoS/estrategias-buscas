@@ -9,36 +9,35 @@ import java.util.List;
 
 public class DataloadController {
 
-    public static List<Node> carregarRotasTerrestres(List<Integer> hval){
+    public static List<Node> carregarRotasTerrestres(){
 
-        int i = 0;
-        Node aracaju = new Node("Aracajú", hval.get(i++));
-        Node belem = new Node("Belém", hval.get(i++));
-        Node beloHorizonte = new Node("Belo Horizonte", hval.get(i++));
-        Node boaVista = new Node("Boa Vista", hval.get(i++));
-        Node brasilia = new Node("Brasília", hval.get(i++));
-        Node campoGrande = new Node("Campo Grande", hval.get(i++));
-        Node cuiaba = new Node("Cuiabá", hval.get(i++));
-        Node curitiba = new Node("Curitiba", hval.get(i++));
-        Node florianopolis = new Node("Florianópolis", hval.get(i++));
-        Node fortaleza = new Node("Fortaleza", hval.get(i++));
-        Node goiania = new Node("Goiânia", hval.get(i++));
-        Node joaoPessoa = new Node("João", hval.get(i++));
-        Node macapa = new Node("Macapá", hval.get(i++));
-        Node maceio = new Node("Maceió", hval.get(i++));
-        Node manaus = new Node("Manaus", hval.get(i++));
-        Node natal = new Node("Natal", hval.get(i++));
-        Node palmas = new Node("Palmas", hval.get(i++));
-        Node portoAlegre = new Node("Porto Alegre", hval.get(i++));
-        Node portoVelho = new Node("Porto Velho", hval.get(i++));
-        Node recife = new Node("Recife", hval.get(i++));
-        Node rioBranco = new Node("Rio Branco", hval.get(i++));
-        Node rioJaneiro = new Node("Rio de Janeiro", hval.get(i++));
-        Node salvador = new Node("Salvador", hval.get(i++));
-        Node saoLuis = new Node("São Luis", hval.get(i++));
-        Node saoPaulo = new Node("São Paulo", hval.get(i++));
-        Node teresina = new Node("Teresina", hval.get(i++));
-        Node vitoria = new Node("Vitória", hval.get(i));
+        Node aracaju = new Node("Aracajú");
+        Node belem = new Node("Belém");
+        Node beloHorizonte = new Node("Belo Horizonte");
+        Node boaVista = new Node("Boa Vista");
+        Node brasilia = new Node("Brasília");
+        Node campoGrande = new Node("Campo Grande");
+        Node cuiaba = new Node("Cuiabá");
+        Node curitiba = new Node("Curitiba");
+        Node florianopolis = new Node("Florianópolis");
+        Node fortaleza = new Node("Fortaleza");
+        Node goiania = new Node("Goiânia");
+        Node joaoPessoa = new Node("João");
+        Node macapa = new Node("Macapá");
+        Node maceio = new Node("Maceió");
+        Node manaus = new Node("Manaus");
+        Node natal = new Node("Natal");
+        Node palmas = new Node("Palmas");
+        Node portoAlegre = new Node("Porto Alegre");
+        Node portoVelho = new Node("Porto Velho");
+        Node recife = new Node("Recife");
+        Node rioBranco = new Node("Rio Branco");
+        Node rioJaneiro = new Node("Rio de Janeiro");
+        Node salvador = new Node("Salvador");
+        Node saoLuis = new Node("São Luis");
+        Node saoPaulo = new Node("São Paulo");
+        Node teresina = new Node("Teresina");
+        Node vitoria = new Node("Vitória");
 
         portoAlegre.setAdjacencies(Collections.singletonList(
                 new Edge(florianopolis, 476)
