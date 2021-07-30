@@ -32,7 +32,12 @@ public class Run {
     public static void main(String[] args) {
 
         List<Node> list1 = DataloadController.carregarRotasTerrestres();
-        carregarDistanciaEuristica(list1, DISTANCIAS_PORTOALEGRE);
+
+        //DfsController.dfs(list1.get(BOAVISTA), list1.get(PORTOALEGRE));
+        DijkstraAlgo.computePaths(list1.get(MANAUS), list1.get(SAOPAULO));
+
+
+/*        carregarDistanciaEuristica(list1, DISTANCIAS_PORTOALEGRE);
         testarAstar(list1.get(BOAVISTA), list1.get(PORTOALEGRE));
 
         List<Node> list2 = DataloadController.carregarRotasTerrestres();
@@ -41,7 +46,7 @@ public class Run {
 
         List<Node> list3 = DataloadController.carregarRotasTerrestres();
         carregarDistanciaEuristica(list3, DISTANCIAS_FORTALEZA);
-        testarAstar(list3.get(RIO), list3.get(FORTALEZA));
+        testarAstar(list3.get(RIO), list3.get(FORTALEZA));*/
     }
 
     private static void testarAstar(Node nodoInicio, Node nodoFinal){

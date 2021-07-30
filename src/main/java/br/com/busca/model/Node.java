@@ -3,7 +3,7 @@ package br.com.busca.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Node {
+public class Node implements Comparable<Node> {
 
     public final String value;
 
@@ -21,6 +21,10 @@ public class Node {
         this.value = val;
     }
 
+    public List<Edge> getAdjacencies() {
+        return adjacencies;
+    }
+
     public void setH_scores(double h_scores) {
         this.h_scores = h_scores;
     }
@@ -33,4 +37,8 @@ public class Node {
         return value;
     }
 
+    @Override
+    public int compareTo(Node other){
+        return Double.compare(h_scores, other.h_scores);
+    }
 }

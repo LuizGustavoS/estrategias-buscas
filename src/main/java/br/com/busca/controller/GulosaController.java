@@ -7,7 +7,7 @@ import java.util.*;
 
 //https://gist.github.com/raymondchua/8064159
 //https://www.youtube.com/watch?v=UwtjG1BUHJA
-public class AstarController {
+public class GulosaController {
 
     public static List<Node> aStarSearch(Node source, Node goal){
 
