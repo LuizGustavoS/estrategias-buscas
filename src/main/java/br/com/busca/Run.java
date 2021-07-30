@@ -2,6 +2,7 @@ package br.com.busca;
 
 import br.com.busca.controller.AstarController;
 import br.com.busca.controller.DataloadController;
+import br.com.busca.controller.GulosaController;
 import br.com.busca.model.Node;
 
 import java.util.Arrays;
@@ -33,11 +34,10 @@ public class Run {
 
         List<Node> list1 = DataloadController.carregarRotasTerrestres();
 
-        //DfsController.dfs(list1.get(BOAVISTA), list1.get(PORTOALEGRE));
-        DijkstraAlgo.computePaths(list1.get(MANAUS), list1.get(SAOPAULO));
+        carregarDistanciaEuristica(list1, DISTANCIAS_PORTOALEGRE);
+        GulosaController.aStarSearch(list1.get(BOAVISTA), list1.get(PORTOALEGRE));
 
-
-/*        carregarDistanciaEuristica(list1, DISTANCIAS_PORTOALEGRE);
+/*      carregarDistanciaEuristica(list1, DISTANCIAS_PORTOALEGRE);
         testarAstar(list1.get(BOAVISTA), list1.get(PORTOALEGRE));
 
         List<Node> list2 = DataloadController.carregarRotasTerrestres();
