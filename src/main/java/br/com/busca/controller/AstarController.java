@@ -13,10 +13,8 @@ public class AstarController {
 
         Set<Node> explored = new HashSet<>();
 
-        //override compare method
         PriorityQueue<Node> queue = new PriorityQueue<>(20, Comparator.comparingDouble(i -> i.f_scores));
 
-        //cost from start
         source.g_scores = 0;
 
         queue.add(source);
@@ -43,20 +41,25 @@ public class AstarController {
 
                 /*if child node has been evaluated and
                 the newer f_score is higher, skip*/
-                if ((!explored.contains(child)) || (!(temp_f_scores >= child.f_scores))) {
-                    if((!queue.contains(child)) || (temp_f_scores < child.f_scores)){
-
-                        child.parent = current;
-                        child.g_scores = temp_g_scores;
-                        child.f_scores = temp_f_scores;
-
-                        queue.remove(child);
-                        queue.add(child);
-                    }
+                if((explored.contains(child)) && (temp_f_scores >= child.f_scores)){
+                    continue;
                 }
 
                 /*else if child node is not in queue or
                 newer f_score is lower*/
+
+                else if((!queue.contains(child)) || (temp_f_scores < child.f_scores)){
+
+                    child.parent = current;
+                    child.g_scores = temp_g_scores;
+                    child.f_scores = temp_f_scores;
+
+                    if(queue.contains(child)){
+                        queue.remove(child);
+                    }
+
+                    queue.add(child);
+                }
             }
         }
 
