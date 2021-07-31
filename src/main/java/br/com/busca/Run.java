@@ -3,10 +3,12 @@ package br.com.busca;
 import br.com.busca.controller.AstarController;
 import br.com.busca.controller.DataloadController;
 import br.com.busca.controller.GulosaController;
+import br.com.busca.model.Edge;
 import br.com.busca.model.Node;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class Run {
 
@@ -43,14 +45,31 @@ public class Run {
         final Node nodoInicial = list.get(inicio);
         final Node nodoFinal = list.get(termino);
 
-        System.out.println("------------------------------------------------");
-        System.out.println("Teste de " + nodoInicial + " à " + nodoFinal);
+        System.out.println("--------------------------------------------------------------------------------");
+        System.out.println("Teste de " + nodoInicial + " à " + nodoFinal + ". Distancia aérea de " + nodoInicial.h_scores);
 
         List<Node> resultAstar = AstarController.aStarSearch(nodoInicial, nodoFinal);
         List<Node> resultGulosa = GulosaController.gulosaSearch(nodoInicial, nodoFinal);
 
-        System.out.println("Resultado AEstrela: " + resultAstar);
-        System.out.println("Resultado Gulosa: " + resultGulosa);
+        System.out.println("Resultado AEstrela: " + resultAstar + ". Distancia terrestre de " + calculaDistancia(resultAstar));
+        System.out.println("Resultado Gulosa:   " + resultGulosa + ". Distancia terrestre de " + calculaDistancia(resultGulosa));
+    }
+
+    private static double calculaDistancia(List<Node> list){
+
+        double total = 0;
+        for (int i = 0; i < list.size() -1; i++) {
+            int finalI = i;
+            Optional<Edge> edge = list.get(i + 1).adjacencies.stream()
+                    .filter(a -> a.target.equals(list.get(finalI)))
+                    .findFirst();
+
+            if (edge.isPresent()){
+                total = total + edge.get().getCost();
+            }
+        }
+
+        return total;
     }
 
 }
