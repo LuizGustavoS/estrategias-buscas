@@ -32,43 +32,25 @@ public class Run {
 
     public static void main(String[] args) {
 
-        List<Node> list1 = DataloadController.carregarRotasTerrestres();
-        carregarDistanciaEuristica(list1, DISTANCIAS_PORTOALEGRE);
-        testarAstar(list1.get(BOAVISTA), list1.get(PORTOALEGRE));
-        testarGulosa(list1.get(BOAVISTA), list1.get(PORTOALEGRE));
-
-        /*
-        List<Node> list2 = DataloadController.carregarRotasTerrestres();
-        carregarDistanciaEuristica(list2, DISTANCIAS_SAOPAULO);
-        testarAstar(list2.get(MANAUS), list2.get(SAOPAULO));
-
-        List<Node> list3 = DataloadController.carregarRotasTerrestres();
-        carregarDistanciaEuristica(list3, DISTANCIAS_FORTALEZA);
-        testarAstar(list3.get(RIO), list3.get(FORTALEZA)); */
+        testarAlgoritmos(DISTANCIAS_PORTOALEGRE, BOAVISTA, PORTOALEGRE);
+        testarAlgoritmos(DISTANCIAS_SAOPAULO, MANAUS, SAOPAULO);
+        testarAlgoritmos(DISTANCIAS_FORTALEZA, RIO, FORTALEZA);
     }
 
-    private static void testarAstar(Node nodoInicio, Node nodoFinal){
+    private static void testarAlgoritmos(List<Integer> listEu, int inicio, int termino){
 
-        List<Node> result = AstarController.aStarSearch(nodoInicio, nodoFinal);
-        System.out.println("Ponto de Partida: " + nodoInicio);
-        System.out.println("Ponto de chegada: " + nodoFinal);
-        System.out.println("Melhor caminho: " + result);
+        final List<Node> list = DataloadController.carregarRotasTerrestres(listEu);
+        final Node nodoInicial = list.get(inicio);
+        final Node nodoFinal = list.get(termino);
+
         System.out.println("------------------------------------------------");
-    }
+        System.out.println("Teste de " + nodoInicial + " à " + nodoFinal);
 
-    private static void testarGulosa(Node nodoInicio, Node nodoFinal){
+        List<Node> resultAstar = AstarController.aStarSearch(nodoInicial, nodoFinal);
+        List<Node> resultGulosa = GulosaController.gulosaSearch(nodoInicial, nodoFinal);
 
-        List<Node> result = GulosaController.gulosaSearch(nodoInicio, nodoFinal);
-        System.out.println("Ponto de Partida: " + nodoInicio);
-        System.out.println("Ponto de chegada: " + nodoFinal);
-        System.out.println("Melhor caminho: " + result);
-        System.out.println("------------------------------------------------");
-    }
-
-    private static void carregarDistanciaEuristica(List<Node> listCidades, List<Integer> listDistancias){
-        for (int i = 0; i < listCidades.size(); i++) {
-            listCidades.get(i).setH_scores(listDistancias.get(i));
-        }
+        System.out.println("Resultado AEstrela: " + resultAstar);
+        System.out.println("Resultado Gulosa: " + resultGulosa);
     }
 
 }

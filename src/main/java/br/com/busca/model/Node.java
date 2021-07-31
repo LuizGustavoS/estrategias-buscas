@@ -7,7 +7,7 @@ public class Node {
 
     public final String value;
 
-    public double h_scores;
+    public final double h_scores;
 
     public double g_scores;
     
@@ -17,11 +17,8 @@ public class Node {
 
     public List<Edge> adjacencies = new ArrayList<>();
 
-    public Node(String val){
+    public Node(String val, double h_scores){
         this.value = val;
-    }
-
-    public void setH_scores(double h_scores) {
         this.h_scores = h_scores;
     }
 
