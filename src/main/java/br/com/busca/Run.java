@@ -51,8 +51,8 @@ public class Run {
         List<Node> resultAstar = AstarController.aStarSearch(nodoInicial, nodoFinal);
         List<Node> resultGulosa = GulosaController.gulosaSearch(nodoInicial, nodoFinal);
 
-        System.out.println("Resultado AEstrela: " + resultAstar + ". Distancia terrestre de " + calculaDistancia(resultAstar));
-        System.out.println("Resultado Gulosa:   " + resultGulosa + ". Distancia terrestre de " + calculaDistancia(resultGulosa));
+        System.out.println("Resultado AEstrela: " + resultAstar + ". Distância terrestre de " + calculaDistancia(resultAstar));
+        System.out.println("Resultado Gulosa: " + resultGulosa + ". Distância terrestre de " + calculaDistancia(resultGulosa));
     }
 
     private static double calculaDistancia(List<Node> list){
